@@ -1,0 +1,9 @@
+package com.sushiapi.SushiApi.model.dtos;
+
+import lombok.Data;
+
+@Data
+public class LoginRequestDTO {
+    private String username; // o email
+    private String password;
+}
