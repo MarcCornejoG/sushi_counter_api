@@ -21,8 +21,6 @@ public class UserDetailService implements UserDetailsService {
         User user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + usernameOrEmail));
 
-        System.out.println("Usuario encontrado: " + user.getUsername()); // ← Debug
-        System.out.println("Password hasheado: " + user.getPassword()); // ← Debug
         return UserPrincipal.create(user);
     }
 }
