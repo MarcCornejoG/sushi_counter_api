@@ -47,18 +47,14 @@ public class AuthService {
 
             UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 
-            // Actualizar último acceso usando UserService
             userService.updateLastAccess(userPrincipal.getId());
 
-            // Obtener datos actualizados del usuario
             UserResponseDTO user = userService.findById(userPrincipal.getId())
                     .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-            // Generar tokens
             String accessToken = jwtUtils.generateAccessToken(userPrincipal.getUsername());
             String refreshToken = jwtUtils.generateRefreshToken(userPrincipal.getUsername());
 
-            // Crear respuesta
             UserResponseDTO userResponse = modelMapper.map(user, UserResponseDTO.class);
 
             return AuthResponseDTO.builder()
