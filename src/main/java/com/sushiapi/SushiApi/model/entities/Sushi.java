@@ -48,7 +48,6 @@ public class Sushi {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    // Relationship with consumption records
     @JsonManagedReference
     @OneToMany(mappedBy = "sushi", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ConsumptionRecord> consumptionRecords = new ArrayList<>();
