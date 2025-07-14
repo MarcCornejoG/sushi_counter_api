@@ -55,7 +55,6 @@ public class User {
     @Column(name = "last_access")
     private LocalDateTime lastAccess;
 
-    // Relationship with consumption records
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<ConsumptionRecord> consumptionRecords = new ArrayList<>();
