@@ -37,11 +37,10 @@ public UserResponseDTO createUser (UserDTO userDTO){
             user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
             user.setActive(true);
             User savedUser = userRepository.save(user);
-            System.out.println("Usuario guardado: " + savedUser.getId()); // ← Debug
 
             return modelMapper.map(savedUser, UserResponseDTO.class);
         } catch (Exception e) {
-            e.printStackTrace(); // ← Debug
+            e.printStackTrace(); 
             throw e;
         }
 
