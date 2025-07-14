@@ -75,7 +75,6 @@ public class AuthController {
     @PostMapping("/logout")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<String> logout() {
-        // En JWT stateless, el logout se maneja en el cliente eliminando el token
         return ResponseEntity.ok("Logout exitoso");
     }
 }
